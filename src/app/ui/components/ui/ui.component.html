@@ -1,8 +1,10 @@
 <header class="fixed-top">
   <!-- un bouton avec un click pour ouvrir ou fermer la nav -->
   <span (click)="toggle()">
-    <ng-content *ngIf="open" select=".tr-btn-close"></ng-content>
-    <ng-content *ngIf="!open" select=".tr-btn-open"></ng-content>
+    <ng-content *ngIf="open; else elseBlock" select=".tr-btn-close"></ng-content>
+    <ng-template #elseBlock>
+      <ng-content select=".tr-btn-open"></ng-content>
+    </ng-template>
   </span>
   <!-- utilisez la structure ngif else -->
   <!-- transclusion pour prejection de template html dans des templates html -->
