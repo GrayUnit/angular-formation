@@ -1,10 +1,15 @@
 <header class="fixed-top">
-
+  <!-- un bouton avec un click pour ouvrir ou fermer la nav -->
+  <span (click)="toggle()">
+    <ng-content *ngIf="open" select=".tr-btn-close"></ng-content>
+    <ng-content *ngIf="!open" select=".tr-btn-open"></ng-content>
+  </span>
+  <!-- utilisez la structure ngif else -->
   <!-- transclusion pour prejection de template html dans des templates html -->
   <ng-content select=".tr-header"></ng-content>
 
 </header>
-<main>
+<main [ngClass]="{'close-aside': !open}">
 
   <div class="shadow position-fixed">
 
