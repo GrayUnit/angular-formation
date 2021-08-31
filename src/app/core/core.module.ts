@@ -10,8 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { Header2Component } from './components/header2/header2.component';
 import { Nav2Component } from './components/nav2/nav2.component';
 import { Footer2Component } from './components/footer2/footer2.component';
-
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,11 +19,9 @@ import { Footer2Component } from './components/footer2/footer2.component';
     FooterComponent,
     Header2Component,
     Nav2Component,
-    Footer2Component
+    Footer2Component,
   ],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule, RouterModule],
   exports: [
     UiModule,
     LoginModule,
@@ -35,7 +32,7 @@ import { Footer2Component } from './components/footer2/footer2.component';
     FooterComponent,
     Header2Component,
     Nav2Component,
-    Footer2Component
-  ]
+    Footer2Component,
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}
