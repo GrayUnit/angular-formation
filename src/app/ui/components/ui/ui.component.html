@@ -1,6 +1,8 @@
 <header class="fixed-top">
 
-  instance de header component
+  <!-- transclusion pour prejection de template html dans des templates html -->
+  <ng-content select=".tr-header"></ng-content>
+
 </header>
 <main>
 
@@ -11,7 +13,7 @@
   <aside>
     <div class="scroller">
 
-      instance de nav component
+      <ng-content select=".tr-nav"></ng-content>
 
     </div>
   </aside>
@@ -20,13 +22,13 @@
 
     <div class="contents">
 
-      demander au router angular de generer un webcomponent en fonction de la route sur laquelle on est
+      <ng-content select=".tr-content"></ng-content>
 
     </div>
 
     <footer>
 
-      instance de footer component
+      <ng-content select=".tr-footer"></ng-content>
 
     </footer>
 
