@@ -1,0 +1,15 @@
+.bandeau {
+  padding: 1rem;
+  background-color: var(--app-warning);
+  h1 {
+    margin: 0;
+    font-size: var(--app-h1-fs);
+    color: var(--app-light);
+  }
+}
+
+.mycontainer {
+  max-width: 500px;
+  padding: 15px;
+  margin: auto;
+}

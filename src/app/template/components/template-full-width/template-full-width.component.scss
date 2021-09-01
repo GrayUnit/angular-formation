@@ -1,0 +1,13 @@
+.bandeau {
+  padding: 1rem;
+  background-color: var(--app-warning);
+  h1 {
+    margin: 0;
+    font-size: var(--app-h1-fs);
+    color: var(--app-light);
+  }
+}
+
+.full-width {
+  padding: 15px;
+}
