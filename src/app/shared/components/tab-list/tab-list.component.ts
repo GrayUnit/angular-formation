@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab-list',
@@ -6,16 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab-list.component.scss'],
 })
 export class TabListComponent implements OnInit {
-  public headers: string[];
-  public datas: any[];
-  constructor() {
-    // mock variables
-    this.headers = ['header1', 'header2', 'header3'];
-    this.datas = [
-      { type: 'formation', client: 'Betclic', tjm: 1200, state: 'OPTION' },
-      { type: 'formation', client: 'Betclic', tjm: 1200, state: 'OPTION' },
-    ];
-  }
+  @Input() headers!: string[];
+  @Input() datas!: any[];
+  constructor() {}
 
   ngOnInit(): void {}
 }

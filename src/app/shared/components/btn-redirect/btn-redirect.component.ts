@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-btn-redirect',
@@ -6,12 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./btn-redirect.component.scss'],
 })
 export class BtnRedirectComponent implements OnInit {
-  public route: string;
-  public label: string;
+  @Input() route!: string;
+  @Input() label!: string;
   constructor() {
-    // mock variables
-    this.route = 'test';
-    this.label = 'mon text';
   }
 
   ngOnInit(): void {}
