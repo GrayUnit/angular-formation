@@ -1,0 +1,52 @@
+{
+  "orders": [
+    {
+      "tjm_ht": 1200,
+      "nb_days": 20,
+      "taux_tva": 20,
+      "state": "OPTION",
+      "type": "formation2",
+      "client": "Capgemini2",
+      "comment": "Merci Cap pour les 24k",
+      "id": 1
+    },
+    {
+      "tjm_ht": 1200,
+      "nb_days": 20,
+      "taux_tva": 20,
+      "state": "CONFIRMED",
+      "type": "formation2",
+      "client": "Modis",
+      "comment": "fgddhf",
+      "id": 2
+    },
+    {
+      "tjm_ht": 1200,
+      "nb_days": 20,
+      "taux_tva": 20,
+      "state": "CANCELED",
+      "type": "formation2",
+      "client": "Capgemini",
+      "comment": null,
+      "id": 3
+    }
+  ],
+  "clients": [
+    {
+      "state": "INACTIVE",
+      "taux_tva": 20,
+      "id": 1,
+      "name": "Capgemini",
+      "total_ca_ht": 120000,
+      "email": "test@test.fr"
+    },
+    {
+      "state": "ACTIVE",
+      "taux_tva": 20,
+      "id": 2,
+      "name": "Betclic",
+      "total_ca_ht": 100000,
+      "email": "test2@test.fr"
+    }
+  ]
+}
