@@ -6,8 +6,8 @@
       <td>{{ item.client }}</td>
       <td>{{ item.nb_days }}</td>
       <td>{{ item.tjm_ht }}</td>
-      <td>{{ item | total }}</td>
-      <td>{{ item | total: true }}</td>
+      <td>{{ item.tjm_ht | total2: item.nb_days }}</td>
+      <td>{{ item.tjm_ht | total2: item.nb_days: item.taux_tva }}</td>
       <td>{{ item.state }}</td>
     </tr>
   </app-tab-list>
