@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
 
@@ -9,10 +9,10 @@ import { ColOrdersService } from 'src/app/core/services/col-orders.service';
   styleUrls: ['./page-list-orders.component.scss'],
 })
 export class PageListOrdersComponent implements OnInit {
-  // public collection$: Observable<Order[]>;
-  private sub!: Subscription;
+  public collection$: Observable<Order[]>;
+  // private sub!: Subscription;
   public titre = 'List Orders';
-  public collection!: Order[];
+  // public collection!: Order[];
   public entetes = [
     'Type',
     'Client',
@@ -23,9 +23,10 @@ export class PageListOrdersComponent implements OnInit {
     'State',
   ];
   constructor(private ordersService: ColOrdersService) {
-    this.sub = this.ordersService.collection.subscribe((data) => {
-      this.collection = data;
-    });
+    this.collection$ = this.ordersService.collection;
+    // this.sub = this.ordersService.collection.subscribe((data) => {
+    //   this.collection = data;
+    // });
   }
 
   public changeTitle(): void {
@@ -34,6 +35,6 @@ export class PageListOrdersComponent implements OnInit {
 
   ngOnInit(): void {}
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 }
