@@ -8,7 +8,9 @@
     "buildProd": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "jsonServer": "json-server --watch mock_db/db.json"
+    "jsonServer": "json-server --watch mock_db/db.json",
+    "compodoc": "compodoc -p tsconfig.json -o -s",
+    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/crm-betclic/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +45,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "webpack-bundle-analyzer": "^4.4.2"
   }
 }

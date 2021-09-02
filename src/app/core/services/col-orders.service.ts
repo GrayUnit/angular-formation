@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ColErrorHandler } from '../abstracts/col-error-handler';
+import { StateOrder } from '../enums/state-order';
 import { Order } from '../models/order';
 
 @Injectable({
@@ -34,8 +35,16 @@ export class ColOrdersService extends ColErrorHandler {
   }
 
   // public update state item
+  public changeState(item: Order, state: StateOrder): Observable<Order> {
+    const obj = { ...item };
+    obj.state = state;
+    return this.update(new Order(obj));
+  }
 
   // public update item in collection
+  public update(item: Order): Observable<Order> {
+    return this.http.put<Order>(`${this.urlApi}/orders/${item.id}`, item);
+  }
 
   // public add item in collection
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
+import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
 
@@ -10,6 +11,7 @@ import { ColOrdersService } from 'src/app/core/services/col-orders.service';
 })
 export class PageListOrdersComponent implements OnInit {
   public collection$: Observable<Order[]>;
+  public states = Object.values(StateOrder);
   // private sub!: Subscription;
   public titre = 'List Orders';
   // public collection!: Order[];
@@ -33,6 +35,13 @@ export class PageListOrdersComponent implements OnInit {
     this.titre = 'New List Orders';
   }
 
+  public changeState(item: Order, event: any): void {
+    const state = event.target.value;
+    this.ordersService.changeState(item, state).subscribe((data) => {
+      // gerer les erreur api (qu'on basculera ensuite dans un pipe au niveau du service)
+      item = data;
+    });
+  }
   ngOnInit(): void {}
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
