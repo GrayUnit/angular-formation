@@ -16,12 +16,9 @@ export class Order implements OrderI {
     }
   }
   totalHT(): number {
-    console.log('total ht called');
-
     return this.tjm_ht * this.nb_days;
   }
   totalTTC(): number {
-    console.log('total ttc called');
     return this.tjm_ht * this.nb_days * (1 + this.taux_tva / 100);
   }
 }

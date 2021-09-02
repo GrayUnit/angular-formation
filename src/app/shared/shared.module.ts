@@ -5,15 +5,17 @@ import { IconsModule } from '../icons/icons.module';
 import { TemplateModule } from '../template/template.module';
 import { BtnRedirectComponent } from './components/btn-redirect/btn-redirect.component';
 import { TabListComponent } from './components/tab-list/tab-list.component';
+import { TotalPipe } from './pipes/total.pipe';
 
 @NgModule({
-  declarations: [TabListComponent, BtnRedirectComponent],
+  declarations: [TabListComponent, BtnRedirectComponent, TotalPipe],
   imports: [CommonModule, RouterModule],
   exports: [
     TabListComponent,
     BtnRedirectComponent,
     TemplateModule,
     IconsModule,
+    TotalPipe,
   ],
 })
 export class SharedModule {}
