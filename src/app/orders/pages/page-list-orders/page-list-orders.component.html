@@ -6,7 +6,7 @@
       <td>{{ item.type }}</td>
       <td>{{ item.client | uppercase }}</td>
       <td>{{ item.nb_days }}</td>
-      <td>{{ item.tjm_ht | currency }}</td>
+      <td>{{ item.tjm_ht | currency: 'EUR' }}</td>
       <td>{{ item | total | currency }}</td>
       <td>{{ item | total: true | currency }}</td>
       <td>{{ item.state }}</td>
