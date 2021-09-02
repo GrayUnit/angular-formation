@@ -9,4 +9,6 @@ export interface OrderI {
   nb_days: number;
   tjm_ht: number;
   state: StateOrder;
+  totalHT(): number;
+  totalTTC(): number;
 }

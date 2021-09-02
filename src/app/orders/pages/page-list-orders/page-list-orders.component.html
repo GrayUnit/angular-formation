@@ -4,9 +4,10 @@
     <tr *ngFor="let item of collection">
       <td>{{ item.type }}</td>
       <td>{{ item.client }}</td>
+      <td>{{ item.nb_days }}</td>
       <td>{{ item.tjm_ht }}</td>
-      <td>{{ utilNumbersService.totalHT(item.tjm_ht, item.nb_days) }}</td>
-      <td>{{ utilNumbersService.totalTTC(item.tjm_ht, item.nb_days, item.taux_tva) }}</td>
+      <td>{{ item.totalHT() }}</td>
+      <td>{{ item.totalTTC() }}</td>
       <td>{{ item.state }}</td>
     </tr>
   </app-tab-list>

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
-import { UtilNumbersService } from 'src/app/core/services/util-numbers.service';
 
 @Component({
   selector: 'app-page-list-orders',
@@ -14,13 +13,19 @@ export class PageListOrdersComponent implements OnInit {
   private sub!: Subscription;
   public titre = 'List Orders';
   public collection!: Order[];
-  public entetes = ['Type', 'Client', 'NbJours', 'Tjm HT', 'Total HT', 'State'];
-  constructor(
-    private ordersService: ColOrdersService,
-    public utilNumbersService: UtilNumbersService
-  ) {
+  public entetes = [
+    'Type',
+    'Client',
+    'NbJours',
+    'Tjm HT',
+    'Total HT',
+    'Total TTC',
+    'State',
+  ];
+  constructor(private ordersService: ColOrdersService) {
     this.sub = this.ordersService.collection.subscribe((data) => {
       this.collection = data;
+      console.log(this.collection);
     });
   }
 
