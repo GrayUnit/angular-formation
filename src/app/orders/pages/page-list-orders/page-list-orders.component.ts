@@ -24,6 +24,13 @@ export class PageListOrdersComponent implements OnInit {
     this.titre = 'New List Orders';
   }
 
+  public totalHT(item: Order) {
+    return item.tjm_ht * item.nb_days;
+  }
+  public totalTTC(item: Order) {
+    return this.totalHT(item) * (1 + item.taux_tva / 100);
+  }
+
   ngOnInit(): void {}
   ngOnDestroy(): void {
     this.sub.unsubscribe();

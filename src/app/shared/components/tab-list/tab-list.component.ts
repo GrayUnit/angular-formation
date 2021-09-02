@@ -7,7 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TabListComponent implements OnInit {
   @Input() headers!: string[];
-  @Input() datas!: any[];
   constructor() {}
 
   ngOnInit(): void {}
