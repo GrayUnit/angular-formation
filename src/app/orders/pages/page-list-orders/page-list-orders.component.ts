@@ -39,7 +39,7 @@ export class PageListOrdersComponent implements OnInit {
     const state = event.target.value;
     this.ordersService.changeState(item, state).subscribe((data) => {
       // gerer les erreur api (qu'on basculera ensuite dans un pipe au niveau du service)
-      item = data;
+      Object.assign(item, data);
     });
   }
   ngOnInit(): void {}

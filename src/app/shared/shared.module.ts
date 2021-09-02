@@ -7,9 +7,10 @@ import { BtnRedirectComponent } from './components/btn-redirect/btn-redirect.com
 import { TabListComponent } from './components/tab-list/tab-list.component';
 import { TotalPipe } from './pipes/total.pipe';
 import { Total2Pipe } from './pipes/total2.pipe';
+import { StateDirective } from './directives/state.directive';
 
 @NgModule({
-  declarations: [TabListComponent, BtnRedirectComponent, TotalPipe, Total2Pipe],
+  declarations: [TabListComponent, BtnRedirectComponent, TotalPipe, Total2Pipe, StateDirective],
   imports: [CommonModule, RouterModule],
   exports: [
     TabListComponent,
@@ -18,6 +19,7 @@ import { Total2Pipe } from './pipes/total2.pipe';
     IconsModule,
     TotalPipe,
     Total2Pipe,
+    StateDirective,
   ],
 })
 export class SharedModule {}
