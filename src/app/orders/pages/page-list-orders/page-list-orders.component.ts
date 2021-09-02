@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
+import { UtilNumbersService } from 'src/app/core/services/util-numbers.service';
 
 @Component({
   selector: 'app-page-list-orders',
@@ -14,21 +15,17 @@ export class PageListOrdersComponent implements OnInit {
   public titre = 'List Orders';
   public collection!: Order[];
   public entetes = ['Type', 'Client', 'NbJours', 'Tjm HT', 'Total HT', 'State'];
-  constructor(private orders: ColOrdersService) {
-    this.sub = this.orders.collection.subscribe((data) => {
+  constructor(
+    private ordersService: ColOrdersService,
+    public utilNumbersService: UtilNumbersService
+  ) {
+    this.sub = this.ordersService.collection.subscribe((data) => {
       this.collection = data;
     });
   }
 
   public changeTitle(): void {
     this.titre = 'New List Orders';
-  }
-
-  public totalHT(item: Order) {
-    return item.tjm_ht * item.nb_days;
-  }
-  public totalTTC(item: Order) {
-    return this.totalHT(item) * (1 + item.taux_tva / 100);
   }
 
   ngOnInit(): void {}

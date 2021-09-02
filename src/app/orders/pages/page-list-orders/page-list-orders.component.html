@@ -5,8 +5,8 @@
       <td>{{ item.type }}</td>
       <td>{{ item.client }}</td>
       <td>{{ item.tjm_ht }}</td>
-      <td>{{ totalHT(item) }}</td>
-      <td>{{ totalTTC(item) }}</td>
+      <td>{{ utilNumbersService.totalHT(item.tjm_ht, item.nb_days) }}</td>
+      <td>{{ utilNumbersService.totalTTC(item.tjm_ht, item.nb_days, item.taux_tva) }}</td>
       <td>{{ item.state }}</td>
     </tr>
   </app-tab-list>
