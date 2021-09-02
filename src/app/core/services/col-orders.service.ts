@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+import { ColErrorHandler } from '../abstracts/col-error-handler';
 import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ColOrdersService {
-  // private property collection
+export class ColOrdersService extends ColErrorHandler {
   private data$!: Observable<Order[]>;
   constructor(private http: HttpClient) {
+    super();
     this.collection = this.http
       .get<Order[]>('http://localhost:3000/orders')
       .pipe(
@@ -18,7 +19,8 @@ export class ColOrdersService {
           return tab.map((obj) => {
             return new Order(obj);
           });
-        })
+        }),
+        catchError(this.handleError)
       );
   }
   // public get collection

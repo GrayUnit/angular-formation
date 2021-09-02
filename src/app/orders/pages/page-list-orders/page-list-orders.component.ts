@@ -25,7 +25,6 @@ export class PageListOrdersComponent implements OnInit {
   constructor(private ordersService: ColOrdersService) {
     this.sub = this.ordersService.collection.subscribe((data) => {
       this.collection = data;
-      console.log(this.collection);
     });
   }
 
