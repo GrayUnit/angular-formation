@@ -13,3 +13,9 @@ TP EDIT:
     ☐ declarer la fn update(item: Order) qui utilise et souscrit à la methode update(item) de votre service orders
     ☐ dans le subscribe, vous faire la redirection vers la route list-orders
 
+
+TP DELETE PART ONE:
+  ☐ add icon delete dans tableau sur page list orders avec click=delete(item.id)
+  ☐ declare  delete(id: number) dans le ts qui utilise la methode delete(id) sur service orders et subscribe
+  ☐ dans orders service declare methode delete(id: number) qui fait http delete
+  ☐ dans le ts de list orders component, dans le subscribe de delete vous recupérer juste la reponse de l'api qui ne nous sert a rien ici car c'est dans le service que nous allons rafraichir la collection coté front
