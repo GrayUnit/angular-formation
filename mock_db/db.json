@@ -1,39 +1,9 @@
 {
   "orders": [
     {
-      "id": 1,
-      "type": "formation",
-      "client": "Capgemini",
-      "taux_tva": 20,
-      "comment": "Merci Cap pour les 24k",
-      "nb_days": 20,
-      "tjm_ht": 1200,
-      "state": "OPTION"
-    },
-    {
-      "id": 2,
-      "type": "formation",
-      "client": "Modis",
-      "taux_tva": 20,
-      "comment": "fgddhf",
-      "nb_days": 20,
-      "tjm_ht": 1200,
-      "state": "CONFIRMED"
-    },
-    {
-      "id": 3,
-      "type": "formation",
-      "client": "Capgemini",
-      "taux_tva": 20,
-      "comment": null,
-      "nb_days": 20,
-      "tjm_ht": 1200,
-      "state": "CONFIRMED"
-    },
-    {
       "id": 4,
       "type": "formation",
-      "client": "Betclic",
+      "client": "Betclic test",
       "taux_tva": 20,
       "comment": "un comment",
       "nb_days": 3,
