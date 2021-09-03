@@ -234,13 +234,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SharedModule.html" data-type="entity-link" >SharedModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SharedModule-ebdedde6fbd259e77f6fa62c5f44056c"' : 'data-target="#xs-components-links-module-SharedModule-ebdedde6fbd259e77f6fa62c5f44056c"' }>
+                                            'data-target="#components-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' : 'data-target="#xs-components-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedModule-ebdedde6fbd259e77f6fa62c5f44056c"' :
-                                            'id="xs-components-links-module-SharedModule-ebdedde6fbd259e77f6fa62c5f44056c"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' :
+                                            'id="xs-components-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' }>
                                             <li class="link">
                                                 <a href="components/BtnRedirectComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BtnRedirectComponent</a>
                                             </li>
@@ -249,15 +249,29 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             </li>
                                         </ul>
                                     </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#directives-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' : 'data-target="#xs-directives-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' }>
+                                        <span class="icon ion-md-code-working"></span>
+                                        <span>Directives</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' :
+                                        'id="xs-directives-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' }>
+                                        <li class="link">
+                                            <a href="directives/StateDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >StateDirective</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#pipes-links-module-SharedModule-ebdedde6fbd259e77f6fa62c5f44056c"' : 'data-target="#xs-pipes-links-module-SharedModule-ebdedde6fbd259e77f6fa62c5f44056c"' }>
+                                            'data-target="#pipes-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' : 'data-target="#xs-pipes-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-SharedModule-ebdedde6fbd259e77f6fa62c5f44056c"' :
-                                            'id="xs-pipes-links-module-SharedModule-ebdedde6fbd259e77f6fa62c5f44056c"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' :
+                                            'id="xs-pipes-links-module-SharedModule-b10a7b9d152c2bc132b1bc3012e37b3d"' }>
                                             <li class="link">
                                                 <a href="pipes/Total2Pipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >Total2Pipe</a>
                                             </li>

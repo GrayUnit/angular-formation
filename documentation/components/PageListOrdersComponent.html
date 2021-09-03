@@ -163,6 +163,10 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#changeState" >changeState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#changeTitle" >changeTitle</a>
                             </li>
                             <li>
@@ -245,6 +249,88 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="changeState"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>changeState</b></span>
+                        <a href="#changeState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>changeState(item: <a href="../classes/Order.html" target="_self">Order</a>, event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/orders/pages/page-list-orders/page-list-orders.component.ts:38</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../classes/Order.html" target="_self" >Order</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="changeTitle"></a>
                     <span class="name">
                         <span class="modifier">Public</span>
@@ -300,8 +386,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/app/orders/pages/page-list-orders/page-list-orders.component.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/orders/pages/page-list-orders/page-list-orders.component.ts:46</a></div>
                 </td>
             </tr>
 
@@ -337,8 +423,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/app/orders/pages/page-list-orders/page-list-orders.component.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/orders/pages/page-list-orders/page-list-orders.component.ts:45</a></div>
                 </td>
             </tr>
 
@@ -528,6 +614,13 @@ export class PageListOrdersComponent implements OnInit {
     this.titre &#x3D; &#x27;New List Orders&#x27;;
   }
 
+  public changeState(item: Order, event: any): void {
+    const state &#x3D; event.target.value;
+    this.ordersService.changeState(item, state).subscribe((data) &#x3D;&gt; {
+      // gerer les erreur api (qu&#x27;on basculera ensuite dans un pipe au niveau du service)
+      Object.assign(item, data);
+    });
+  }
   ngOnInit(): void {}
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
@@ -548,13 +641,10 @@ export class PageListOrdersComponent implements OnInit {
       &lt;td&gt;{{ item.tjm_ht | currency: &#x27;EUR&#x27; }}&lt;/td&gt;
       &lt;td&gt;{{ item | total | currency }}&lt;/td&gt;
       &lt;td&gt;{{ item | total: true | currency }}&lt;/td&gt;
-      &lt;td&gt;
-        &lt;select&gt;
+      &lt;td [appState]&#x3D;&quot;item.state&quot;&gt;
+        &lt;select (change)&#x3D;&quot;changeState(item, $event)&quot;&gt;
           &lt;option *ngFor&#x3D;&quot;let state of states&quot; [value]&#x3D;&quot;state&quot; [selected]&#x3D;&quot;item.state &#x3D;&#x3D;&#x3D; state&quot;&gt;{{ state }}
           &lt;/option&gt;
-          &lt;!-- &lt;option value&#x3D;&quot;CANCELED&quot;&gt;CANCELED&lt;/option&gt;
-          &lt;option value&#x3D;&quot;OPTION&quot; selected&#x3D;&quot;true&quot;&gt;OPTION&lt;/option&gt;
-          &lt;option value&#x3D;&quot;CONFIRMED&quot;&gt;CONFIRMED&lt;/option&gt; --&gt;
         &lt;/select&gt;
       &lt;/td&gt;
     &lt;/tr&gt;
@@ -568,7 +658,16 @@ export class PageListOrdersComponent implements OnInit {
                 <p class="comment">
                     <code>./page-list-orders.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss"></code></pre>
+                <pre class="line-numbers"><code class="language-scss">.state-canceled {
+  background: var(--app-error);
+}
+.state-option {
+  background: var(--app-warning);
+}
+.state-confirmed {
+  background: var(--app-success);
+}
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -596,9 +695,9 @@ export class PageListOrdersComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><app-template-full-width [title]="titre" *ngIf="collection$ | async as collection">  <!-- {{ collection | json }} -->  <button (click)="changeTitle()">modif title</button>  <app-tab-list [headers]="entetes">    <tr *ngFor="let item of collection">      <td>{{ item.type }}</td>      <td>{{ item.client | uppercase }}</td>      <td>{{ item.nb_days }}</td>      <td>{{ item.tjm_ht | currency: \'EUR\' }}</td>      <td>{{ item | total | currency }}</td>      <td>{{ item | total: true | currency }}</td>      <td>        <select>          <option *ngFor="let state of states" [value]="state" [selected]="item.state === state">{{ state }}          </option>          <!-- <option value="CANCELED">CANCELED</option>          <option value="OPTION" selected="true">OPTION</option>          <option value="CONFIRMED">CONFIRMED</option> -->        </select>      </td>    </tr>  </app-tab-list>  <app-btn-redirect label="Add Order" route="add-order"></app-btn-redirect></app-template-full-width></div>'
+        var COMPONENT_TEMPLATE = '<div><app-template-full-width [title]="titre" *ngIf="collection$ | async as collection">  <!-- {{ collection | json }} -->  <button (click)="changeTitle()">modif title</button>  <app-tab-list [headers]="entetes">    <tr *ngFor="let item of collection">      <td>{{ item.type }}</td>      <td>{{ item.client | uppercase }}</td>      <td>{{ item.nb_days }}</td>      <td>{{ item.tjm_ht | currency: \'EUR\' }}</td>      <td>{{ item | total | currency }}</td>      <td>{{ item | total: true | currency }}</td>      <td [appState]="item.state">        <select (change)="changeState(item, $event)">          <option *ngFor="let state of states" [value]="state" [selected]="item.state === state">{{ state }}          </option>        </select>      </td>    </tr>  </app-tab-list>  <app-btn-redirect label="Add Order" route="add-order"></app-btn-redirect></app-template-full-width></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnRedirectComponent', 'selector': 'app-btn-redirect'},{'name': 'Footer2Component', 'selector': 'app-footer2'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'Header2Component', 'selector': 'app-header2'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'IconCloseComponent', 'selector': 'app-icon-close'},{'name': 'IconDeleteComponent', 'selector': 'app-icon-delete'},{'name': 'IconEditComponent', 'selector': 'app-icon-edit'},{'name': 'IconNavComponent', 'selector': 'app-icon-nav'},{'name': 'Nav2Component', 'selector': 'app-nav2'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'PageAddClientComponent', 'selector': 'app-page-add-client'},{'name': 'PageAddOrderComponent', 'selector': 'app-page-add-order'},{'name': 'PageEditClientComponent', 'selector': 'app-page-edit-client'},{'name': 'PageEditOrderComponent', 'selector': 'app-page-edit-order'},{'name': 'PageForgotPasswordComponent', 'selector': 'app-page-forgot-password'},{'name': 'PageListClientsComponent', 'selector': 'app-page-list-clients'},{'name': 'PageListOrdersComponent', 'selector': 'app-page-list-orders'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PageResetPasswordComponent', 'selector': 'app-page-reset-password'},{'name': 'PageSignInComponent', 'selector': 'app-page-sign-in'},{'name': 'PageSignUpComponent', 'selector': 'app-page-sign-up'},{'name': 'TabListComponent', 'selector': 'app-tab-list'},{'name': 'TemplateContainerComponent', 'selector': 'app-template-container'},{'name': 'TemplateFullWidthComponent', 'selector': 'app-template-full-width'},{'name': 'Ui2Component', 'selector': 'app-ui2'},{'name': 'UiComponent', 'selector': 'app-ui'}];
-    var DIRECTIVES = [];
+    var DIRECTIVES = [{'name': 'StateDirective', 'selector': '[appState]'}];
     var ACTUAL_COMPONENT = {'name': 'PageListOrdersComponent'};
 </script>
 <script src="../js/tree.js"></script>

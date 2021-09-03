@@ -4,7 +4,7 @@
       "taux_tva": 20,
       "nb_days": 20,
       "tjm_ht": 1200,
-      "state": "CANCELED",
+      "state": "OPTION",
       "type": "formation2",
       "client": "Capgemini2",
       "comment": "Merci Cap pour les 24k",

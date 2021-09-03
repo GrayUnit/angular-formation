@@ -24,7 +24,9 @@ export class ColOrdersService extends ColErrorHandler {
       catchError(this.handleError)
     );
   }
-  // public get collection
+  /**
+   * getter for my collection
+   */
   get collection(): Observable<Order[]> {
     return this.data$;
   }
