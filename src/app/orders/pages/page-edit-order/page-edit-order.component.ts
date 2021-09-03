@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StateOrder } from 'src/app/core/enums/state-order';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
+import { ColOrdersService } from 'src/app/core/services/col-orders.service';
 
 @Component({
   selector: 'app-page-edit-order',
@@ -8,20 +10,23 @@ import { Order } from 'src/app/core/models/order';
   styleUrls: ['./page-edit-order.component.scss'],
 })
 export class PageEditOrderComponent implements OnInit {
-  public item: Order;
-  constructor() {
-    // mock item
-    this.item = new Order({
-      taux_tva: 20,
-      nb_days: 20,
-      tjm_ht: 1200,
-      state: StateOrder.OPTION,
-      type: 'formation2',
-      client: 'Capgemini2',
-      comment: 'Merci Cap pour les 24k',
-      id: 1,
+  public item$!: Observable<Order>;
+  constructor(
+    private route: ActivatedRoute,
+    private ordersService: ColOrdersService,
+    private router: Router
+  ) {
+    this.route.paramMap.subscribe((params) => {
+      const id = Number(params.get('id'));
+      this.item$ = this.ordersService.getItemById(id);
     });
   }
 
   ngOnInit(): void {}
+
+  public update(item: Order): void {
+    this.ordersService.update(item).subscribe((res) => {
+      this.router.navigate(['list-orders']);
+    });
+  }
 }

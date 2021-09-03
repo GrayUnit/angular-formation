@@ -45,15 +45,24 @@ export class ColOrdersService extends ColErrorHandler {
 
   // public update item in collection
   public update(item: Order): Observable<Order> {
-    return this.http.put<Order>(`${this.urlApi}/orders/${item.id}`, item);
+    return this.http
+      .put<Order>(`${this.urlApi}/orders/${item.id}`, item)
+      .pipe(catchError(this.handleError));
   }
 
   // public add item in collection
   public add(item: Order): Observable<Order> {
-    return this.http.post<Order>(`${this.urlApi}/orders`, item);
+    return this.http
+      .post<Order>(`${this.urlApi}/orders`, item)
+      .pipe(catchError(this.handleError));
   }
 
   // public delete item in collection
 
   // public get item by id from collection
+  public getItemById(id: number): Observable<Order> {
+    return this.http
+      .get<Order>(`${this.urlApi}/orders/${id}`)
+      .pipe(catchError(this.handleError));
+  }
 }

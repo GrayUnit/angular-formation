@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
@@ -16,6 +17,7 @@ export class PageListOrdersComponent implements OnInit {
   public titre = 'List Orders';
   // public collection!: Order[];
   public entetes = [
+    'Action',
     'Type',
     'Client',
     'NbJours',
@@ -24,7 +26,7 @@ export class PageListOrdersComponent implements OnInit {
     'Total TTC',
     'State',
   ];
-  constructor(private ordersService: ColOrdersService) {
+  constructor(private ordersService: ColOrdersService, private router: Router) {
     this.collection$ = this.ordersService.collection;
     // this.sub = this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
@@ -41,6 +43,10 @@ export class PageListOrdersComponent implements OnInit {
       // gerer les erreur api (qu'on basculera ensuite dans un pipe au niveau du service)
       Object.assign(item, data);
     });
+  }
+
+  public goToEdit(id: number): void {
+    this.router.navigate(['list-orders', 'edit-order', id]);
   }
   ngOnInit(): void {}
   ngOnDestroy(): void {
