@@ -3,6 +3,9 @@
   <button (click)="changeTitle()">modif title</button>
   <app-tab-list [headers]="entetes">
     <tr *ngFor="let item of collection">
+      <td>
+        <app-icon-edit (click)="goToEdit(item.id)"></app-icon-edit>
+      </td>
       <td>{{ item.type }}</td>
       <td>{{ item.client | uppercase }}</td>
       <td>{{ item.nb_days }}</td>

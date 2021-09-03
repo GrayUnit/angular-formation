@@ -1,34 +1,34 @@
 {
   "orders": [
     {
-      "taux_tva": 20,
-      "nb_days": 20,
-      "tjm_ht": 1200,
-      "state": "OPTION",
-      "type": "formation2",
-      "client": "Capgemini2",
-      "comment": "Merci Cap pour les 24k",
-      "id": 1
-    },
-    {
-      "tjm_ht": 1200,
-      "nb_days": 20,
-      "taux_tva": 20,
-      "state": "CONFIRMED",
-      "type": "formation2",
-      "client": "Modis",
-      "comment": "fgddhf",
-      "id": 2
-    },
-    {
-      "taux_tva": 20,
-      "nb_days": 20,
-      "tjm_ht": 1200,
-      "state": "CONFIRMED",
-      "type": "formation2",
+      "id": 1,
+      "type": "formation",
       "client": "Capgemini",
+      "taux_tva": 20,
+      "comment": "Merci Cap pour les 24k",
+      "nb_days": 20,
+      "tjm_ht": 1200,
+      "state": "OPTION"
+    },
+    {
+      "id": 2,
+      "type": "formation",
+      "client": "Modis",
+      "taux_tva": 20,
+      "comment": "fgddhf",
+      "nb_days": 20,
+      "tjm_ht": 1200,
+      "state": "CONFIRMED"
+    },
+    {
+      "id": 3,
+      "type": "formation",
+      "client": "Capgemini",
+      "taux_tva": 20,
       "comment": null,
-      "id": 3
+      "nb_days": 20,
+      "tjm_ht": 1200,
+      "state": "CONFIRMED"
     },
     {
       "id": 4,

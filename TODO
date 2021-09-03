@@ -1,0 +1,15 @@
+
+TP EDIT:
+  ☐ add icon edit dans le tableau
+  ☐ add event click on icon qui appel la fn goToEdit(item.id)
+  ☐ declarer la fn goToEdit(id: number) dans le ts qui fait une redirection vers la route list-orders/edit-order/1 (si l'id 1)
+  ☐ modifier la route edit-order pour qu'elle prenne un id dans l'url (je vous laisse chercher)
+  ☐ sur page edit component ts
+    ☐ get id in url using ActivatedRoute (service Angular) et souscrire à paramMap to get id
+    ☐ call getItemById(id) dans orderService set souscrire ou sans souscription si vous utilisez le | async
+  ☐ sur page edit component html
+    ☐ Binder l'input init et utiliser l'output submited qui va declancher l'appel de la fn update($event)
+  ☐ sur page edit component ts
+    ☐ declarer la fn update(item: Order) qui utilise et souscrit à la methode update(item) de votre service orders
+    ☐ dans le subscribe, vous faire la redirection vers la route list-orders
+
