@@ -29,6 +29,26 @@
       "client": "Capgemini",
       "comment": null,
       "id": 3
+    },
+    {
+      "id": 4,
+      "type": "formation",
+      "client": "Betclic",
+      "taux_tva": 20,
+      "comment": "un comment",
+      "nb_days": 3,
+      "tjm_ht": 1200,
+      "state": "OPTION"
+    },
+    {
+      "id": 5,
+      "type": "coaching",
+      "client": "Modis",
+      "taux_tva": 20,
+      "comment": "qsdfg",
+      "nb_days": 1,
+      "tjm_ht": 1200,
+      "state": "OPTION"
     }
   ],
   "clients": [
