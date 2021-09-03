@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
@@ -12,7 +12,7 @@ export class FormOrderComponent implements OnInit {
   public form!: FormGroup;
   public states = Object.values(StateOrder);
   @Input() init = new Order();
-  @Output() submited: any;
+  @Output() submited = new EventEmitter<Order>();
   // doit être un event
   // doit être un observable d'rxjs
   // ne doit pas être initialisé avec un flux de data lorsque vous le crééz
@@ -33,6 +33,6 @@ export class FormOrderComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log(this.form.value);
+    this.submited.emit(this.form.value);
   }
 }

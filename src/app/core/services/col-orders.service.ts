@@ -49,6 +49,9 @@ export class ColOrdersService extends ColErrorHandler {
   }
 
   // public add item in collection
+  public add(item: Order): Observable<Order> {
+    return this.http.post<Order>(`${this.urlApi}/orders`, item);
+  }
 
   // public delete item in collection
 
