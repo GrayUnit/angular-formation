@@ -5,8 +5,8 @@
         <app-icon-edit (click)="goToEdit(item.id)"></app-icon-edit>
         <app-icon-delete (click)="deleteItem(item.id)"></app-icon-delete>
       </td>
-      <td>{{ item.name }}</td>
-      <td>{{ item.email | uppercase }}</td>
+      <td>{{ item.name | uppercase }}</td>
+      <td>{{ item.email }}</td>
       <td>{{ item.total_ca_ht | currency }}</td>
       <td>{{ item.taux_tva }} %</td>
       <td>{{ item | total: true | currency }}</td>

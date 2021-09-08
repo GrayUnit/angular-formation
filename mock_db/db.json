@@ -37,6 +37,14 @@
       "name": "Betclic",
       "total_ca_ht": 100000,
       "email": "test2@test.fr"
+    },
+    {
+      "id": 3,
+      "name": "Test",
+      "email": "test@gmail.com",
+      "total_ca_ht": 100000,
+      "taux_tva": 20,
+      "state": "ACTIVE"
     }
   ]
 }
