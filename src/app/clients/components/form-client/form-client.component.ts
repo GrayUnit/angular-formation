@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StateClient } from 'src/app/core/enums/state-client';
 import { Client } from 'src/app/core/models/client';
 
@@ -19,8 +19,14 @@ export class FormClientComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       id: [this.init.id],
-      name: [this.init.name],
-      email: [this.init.email],
+      name: [this.init.name, [Validators.required, Validators.minLength(2)]],
+      email: [
+        this.init.email,
+        [
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        ],
+      ],
       total_ca_ht: [this.init.total_ca_ht],
       taux_tva: [this.init.taux_tva],
       state: [this.init.state],
