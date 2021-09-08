@@ -25,9 +25,9 @@
     {
       "state": "INACTIVE",
       "taux_tva": 20,
+      "total_ca_ht": 120000,
       "id": 1,
       "name": "Capgemini",
-      "total_ca_ht": 120000,
       "email": "test@test.fr"
     },
     {
