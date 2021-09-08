@@ -8,7 +8,11 @@ export class Client implements ClientI {
   name!: string;
   total_ca_ht = 0;
   email!: string;
-  constructor() {}
+  constructor(obj?: Partial<Client>) {
+    if (obj) {
+      Object.assign(this, obj);
+    }
+  }
   totalTTC(): number {
     return this.total_ca_ht * (1 + this.taux_tva / 100);
   }
