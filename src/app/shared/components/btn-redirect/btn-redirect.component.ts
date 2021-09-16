@@ -8,8 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BtnRedirectComponent implements OnInit {
   @Input() route!: string;
   @Input() label!: string;
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 }

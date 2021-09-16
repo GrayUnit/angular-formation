@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
@@ -15,7 +15,7 @@ export class PageListOrdersComponent implements OnInit {
   public states = Object.values(StateOrder);
   // private sub!: Subscription;
   public titre = 'List Orders';
-  // public collection!: Order[];
+  public collection!: Order[];
   public entetes = [
     'Action',
     'Type',
@@ -28,9 +28,12 @@ export class PageListOrdersComponent implements OnInit {
   ];
   constructor(private ordersService: ColOrdersService, private router: Router) {
     this.collection$ = this.ordersService.collection;
-    // this.sub = this.ordersService.collection.subscribe((data) => {
+    // this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
     // });
+  }
+  check() {
+    console.log('CD PAGE LIST ORDER');
   }
 
   public changeTitle(): void {
@@ -49,7 +52,9 @@ export class PageListOrdersComponent implements OnInit {
     this.router.navigate(['list-orders', 'edit-order', id]);
   }
   public deleteItem(id: number): void {
-    this.ordersService.delete(id).subscribe();
+    this.ordersService.delete(id).subscribe((res) => {
+      // this.collection$ = this.ordersService.collection;
+    });
   }
   ngOnInit(): void {}
   ngOnDestroy(): void {

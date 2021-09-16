@@ -21,7 +21,7 @@ import { RouterModule } from '@angular/router';
     Nav2Component,
     Footer2Component,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, IconsModule],
   exports: [
     UiModule,
     LoginModule,

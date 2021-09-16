@@ -11,6 +11,9 @@ export class TemplateFullWidthComponent implements OnInit {
     // mock title
     this.title = 'Un titre';
   }
+  check() {
+    console.log('CD TEMPLATE');
+  }
 
   ngOnInit(): void {}
 }
