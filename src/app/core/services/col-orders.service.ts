@@ -13,6 +13,7 @@ import { Order } from '../models/order';
 export class ColOrdersService extends ColErrorHandler {
   private data$ = new BehaviorSubject<Order[]>([]);
   private urlApi = environment.urlApi;
+  public myItem$ = new Subject<Order>();
   constructor(private http: HttpClient) {
     super();
     this.refreshCollection();
@@ -27,7 +28,10 @@ export class ColOrdersService extends ColErrorHandler {
             return new Order(obj);
           });
         }),
-        catchError(this.handleError)
+        catchError(this.handleError),
+        tap((data) => {
+          this.myItem$.next(data[0]);
+        })
       )
       .subscribe((datas) => {
         this.data$.next(datas);

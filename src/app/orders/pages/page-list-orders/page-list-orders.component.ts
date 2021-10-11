@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
@@ -53,6 +53,10 @@ export class PageListOrdersComponent implements OnInit {
     this.ordersService.delete(id).subscribe((res) => {
       // this.collection$ = this.ordersService.collection;
     });
+  }
+
+  public getDetails(item: Order): void {
+    this.ordersService.myItem$.next(item);
   }
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
