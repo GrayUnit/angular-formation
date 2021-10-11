@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
@@ -26,15 +26,13 @@ export class PageListOrdersComponent implements OnInit {
     'Total TTC',
     'State',
   ];
-  constructor(private ordersService: ColOrdersService, private router: Router) {
+  constructor(private ordersService: ColOrdersService, private router: Router, private route: ActivatedRoute) {
     this.collection$ = this.ordersService.collection;
     // this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
     // });
   }
-  check() {
-    console.log('CD PAGE LIST ORDER');
-  }
+
 
   public changeTitle(): void {
     this.titre = 'New List Orders';
@@ -56,7 +54,11 @@ export class PageListOrdersComponent implements OnInit {
       // this.collection$ = this.ordersService.collection;
     });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.data.subscribe((data) => {
+      this.titre = data.title;
+    });
+  }
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
   }
