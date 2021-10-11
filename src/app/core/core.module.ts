@@ -11,6 +11,7 @@ import { Header2Component } from './components/header2/header2.component';
 import { Nav2Component } from './components/nav2/nav2.component';
 import { Footer2Component } from './components/footer2/footer2.component';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { RouterModule } from '@angular/router';
     Nav2Component,
     Footer2Component,
   ],
-  imports: [CommonModule, RouterModule, IconsModule],
+  imports: [CommonModule, RouterModule, IconsModule, TranslateModule.forChild()],
   exports: [
     UiModule,
     LoginModule,

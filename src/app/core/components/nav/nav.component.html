@@ -1,3 +1,5 @@
+<h3 *ngIf="!currentUser">{{ 'Home.WelcomeText' | translate }}</h3>
+<h3 *ngIf="currentUser">{{ 'Home.WelcomeTextLogged' | translate:{'username': currentUser.username } }}</h3>
 <ul class="nav flex-column">
   <li class="nav-item">
     <a class="nav-link" [routerLink]="['list-orders']" routerLinkActive="active">Orders</a>
@@ -7,5 +9,9 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" (click)="logout()" *ngIf="currentUser">Déconnexion</a>
+  </li>
+  <li>
+    <button (click)="changeLanguage('en')">Passer en anglais</button>
+    <button (click)="changeLanguage('fr')">Passer en francais</button>
   </li>
 </ul>

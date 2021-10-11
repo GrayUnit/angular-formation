@@ -1,0 +1,6 @@
+{
+    "Home": {
+        "WelcomeText": "Bienvenue sur l'application",
+        "WelcomeTextLogged": "Bienvenue {{ username }} sur l'application"
+    }
+}
