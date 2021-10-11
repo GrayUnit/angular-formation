@@ -9,6 +9,7 @@ import { fakeBackendProvider } from './core/helpers/fake-backend';
 import { createTranslateLoader } from './core/helpers/translate-loader';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -26,7 +27,8 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
         deps: [HttpClient]
       },
       isolate: false
-    })
+    }),
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
