@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ui',
@@ -8,9 +8,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class UiComponent implements OnInit {
   public open = true;
   constructor() {}
-  check() {
-    console.log('CD UI');
-  }
+
   test() {
     console.log('test');
   }

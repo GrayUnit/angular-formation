@@ -7,9 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   constructor() {}
-  check() {
-    console.log('CD NAV');
-  }
 
   ngOnInit(): void {}
 }

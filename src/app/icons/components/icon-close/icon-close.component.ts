@@ -9,8 +9,5 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class IconCloseComponent implements OnInit {
   public myIcon = faTimes;
   constructor() {}
-  check() {
-    console.log('CD ICON');
-  }
   ngOnInit(): void {}
 }

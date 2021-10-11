@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab-list',
@@ -7,10 +7,8 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 })
 export class TabListComponent implements OnInit {
   @Input() headers!: string[];
-  constructor(private cd: ChangeDetectorRef) {}
-  check() {
-    console.log('CD TABLE');
-  }
+  constructor() {}
+
   test() {
     // this.cd.detectChanges();
     console.log('click tab');
