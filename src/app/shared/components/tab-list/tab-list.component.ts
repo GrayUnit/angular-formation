@@ -12,7 +12,13 @@ export class TabListComponent implements OnInit, OnDestroy {
   @Input() counter!: Observable<any>;
   public count!: number;
   private countSubscription!: Subscription;
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef) {
+    this.cd.detach();
+  }
+
+  public refreshCounter() {
+    this.cd.reattach();
+  }
 
   test() {
     // this.cd.detectChanges();
@@ -23,7 +29,6 @@ export class TabListComponent implements OnInit, OnDestroy {
     this.countSubscription = this.counter.subscribe(
       (data) => {
         this.count = data.nombre;
-        this.cd.markForCheck();
       }
     )
   }
