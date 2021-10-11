@@ -13,11 +13,10 @@ export class TabListComponent implements OnInit, OnDestroy {
   public count!: number;
   private countSubscription!: Subscription;
   constructor(private cd: ChangeDetectorRef) {
-    this.cd.detach();
   }
 
   public refreshCounter() {
-    this.cd.reattach();
+    this.cd.detectChanges();
   }
 
   test() {
