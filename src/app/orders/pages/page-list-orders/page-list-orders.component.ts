@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
@@ -16,9 +16,7 @@ export class PageListOrdersComponent implements OnInit {
   // private sub!: Subscription;
   public titre = 'List Orders';
   public collection!: Order[];
-  public counter = {
-    nombre: 1
-  }
+  public counter: BehaviorSubject<any> = new BehaviorSubject({nombre: 0});
   public entetes = [
     'Action',
     'Type',
@@ -37,7 +35,7 @@ export class PageListOrdersComponent implements OnInit {
   }
 
   public incrementCounter() {
-    this.counter.nombre = this.counter.nombre + 1;
+    this.counter.next({nombre: this.counter.value.nombre + 1});
   }
 
   public changeTitle(): void {

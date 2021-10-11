@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tab-list',
@@ -6,15 +7,27 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   styleUrls: ['./tab-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabListComponent implements OnInit {
+export class TabListComponent implements OnInit, OnDestroy {
   @Input() headers!: string[];
-  @Input() counter!: any;
-  constructor() {}
+  @Input() counter!: Observable<any>;
+  public count!: number;
+  private countSubscription!: Subscription;
+  constructor(private cd: ChangeDetectorRef) {}
 
   test() {
     // this.cd.detectChanges();
     console.log('click tab');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.countSubscription = this.counter.subscribe(
+      (data) => {
+        this.count = data.nombre;
+        this.cd.markForCheck();
+      }
+    )
+  }
+  ngOnDestroy() {
+    this.countSubscription.unsubscribe();
+  }
 }
