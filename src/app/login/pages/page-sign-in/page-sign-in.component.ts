@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-sign-in.component.scss']
 })
 export class PageSignInComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

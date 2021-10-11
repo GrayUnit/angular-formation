@@ -6,7 +6,7 @@ import { PageSignInComponent } from './pages/page-sign-in/page-sign-in.component
 import { PageSignUpComponent } from './pages/page-sign-up/page-sign-up.component';
 
 const routes: Routes = [
-  { path: 'sign-in', component: PageSignInComponent },
+  { path: '', component: PageSignInComponent },
   { path: 'sign-up', component: PageSignUpComponent },
   { path: 'reset-password', component: PageResetPasswordComponent },
   { path: 'forgot-password', component: PageForgotPasswordComponent },

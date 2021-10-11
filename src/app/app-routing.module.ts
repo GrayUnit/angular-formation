@@ -5,6 +5,8 @@ import {
   RouterModule,
   Routes,
 } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
+import { LoginModule } from './login/login.module';
 import { PageForgotPasswordComponent } from './login/pages/page-forgot-password/page-forgot-password.component';
 import { PageResetPasswordComponent } from './login/pages/page-reset-password/page-reset-password.component';
 import { PageSignInComponent } from './login/pages/page-sign-in/page-sign-in.component';
@@ -21,6 +23,11 @@ const routes: Routes = [
     path: 'list-orders',
     loadChildren: () =>
       import('./orders/orders.module').then((m) => m.OrdersModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./orders/orders.module').then((m) => LoginModule)
   },
   {
     path: '**',
