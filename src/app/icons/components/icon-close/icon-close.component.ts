@@ -10,4 +10,8 @@ export class IconCloseComponent implements OnInit {
   public myIcon = faTimes;
   constructor() {}
   ngOnInit(): void {}
+
+  check() {
+    console.log('CD ICON');
+  }
 }

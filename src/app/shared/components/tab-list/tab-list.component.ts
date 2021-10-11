@@ -1,12 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab-list',
   templateUrl: './tab-list.component.html',
   styleUrls: ['./tab-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabListComponent implements OnInit {
   @Input() headers!: string[];
+  @Input() counter!: any;
   constructor() {}
 
   test() {

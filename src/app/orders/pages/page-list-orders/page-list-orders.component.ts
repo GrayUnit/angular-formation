@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
@@ -16,6 +16,9 @@ export class PageListOrdersComponent implements OnInit {
   // private sub!: Subscription;
   public titre = 'List Orders';
   public collection!: Order[];
+  public counter = {
+    nombre: 1
+  }
   public entetes = [
     'Action',
     'Type',
@@ -33,6 +36,9 @@ export class PageListOrdersComponent implements OnInit {
     // });
   }
 
+  public incrementCounter() {
+    this.counter.nombre = this.counter.nombre + 1;
+  }
 
   public changeTitle(): void {
     this.titre = 'New List Orders';

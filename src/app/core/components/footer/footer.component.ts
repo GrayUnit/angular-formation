@@ -9,4 +9,8 @@ export class FooterComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  check() {
+    console.log('CD FOOTER');
+  }
 }

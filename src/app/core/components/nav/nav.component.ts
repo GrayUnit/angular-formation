@@ -33,4 +33,9 @@ export class NavComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  check() {
+    console.log('CD NAV');
+  }
+
 }
