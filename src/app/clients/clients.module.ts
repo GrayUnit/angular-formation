@@ -7,6 +7,7 @@ import { PageListClientsComponent } from './pages/page-list-clients/page-list-cl
 import { FormClientComponent } from './components/form-client/form-client.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { DetailOrderComponent } from './components/detail-order/detail-order.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
     PageAddClientComponent,
     PageEditClientComponent,
     FormClientComponent,
+    DetailOrderComponent,
   ],
   imports: [
     CommonModule,
