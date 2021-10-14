@@ -17,12 +17,17 @@ const routes: Routes = [
     path: 'list-clients',
     loadChildren: () =>
       import('./clients/clients.module').then((m) => m.ClientsModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'list-orders',
     loadChildren: () =>
       import('./orders/orders.module').then((m) => m.OrdersModule),
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then((m) => m.LoginModule)
   },
   {
     path: '**',

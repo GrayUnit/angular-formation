@@ -5,4 +5,7 @@
   <li class="nav-item">
     <a class="nav-link" routerLink="/list-clients" routerLinkActive="active">Clients</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="logout()" *ngIf="currentUser">Déconnexion</a>
+  </li>
 </ul>
