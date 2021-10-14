@@ -10,6 +10,9 @@ import { createTranslateLoader } from './core/helpers/translate-loader';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { StoreModule } from '@ngrx/store';
+import { appEffects, rootReducers } from './core/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -28,7 +31,12 @@ import { StoreModule } from '@ngrx/store';
       },
       isolate: false
     }),
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot(rootReducers),
+    EffectsModule.forRoot(appEffects),
+    StoreDevtoolsModule.instrument({
+      name: '[CRM STORE]',
+      maxAge: 10
+    })
   ],
   providers: [
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },

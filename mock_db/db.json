@@ -9,6 +9,26 @@
       "type": "coaching",
       "client": "Modis",
       "comment": "qsdfg"
+    },
+    {
+      "id": 6,
+      "type": "test",
+      "client": "Test",
+      "taux_tva": 20,
+      "comment": null,
+      "nb_days": 1,
+      "tjm_ht": 1200,
+      "state": "OPTION"
+    },
+    {
+      "id": 7,
+      "type": "test",
+      "client": "test",
+      "taux_tva": 20,
+      "comment": null,
+      "nb_days": 1,
+      "tjm_ht": 1200,
+      "state": "OPTION"
     }
   ],
   "clients": [
