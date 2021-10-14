@@ -11,4 +11,8 @@ export class IconCloseComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  public check() {
+    console.log('CD ICON.COMPONENT');
+  }
 }

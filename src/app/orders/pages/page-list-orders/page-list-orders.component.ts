@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
@@ -9,10 +9,12 @@ import { ColOrdersService } from 'src/app/core/services/col-orders.service';
   selector: 'app-page-list-orders',
   templateUrl: './page-list-orders.component.html',
   styleUrls: ['./page-list-orders.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageListOrdersComponent implements OnInit {
   public collection$: Subject<Order[]>;
   public states = Object.values(StateOrder);
+  public counter: BehaviorSubject<any> = new BehaviorSubject<any>({nombre: 0});
   // private sub!: Subscription;
   public titre = 'List Orders';
   // public collection!: Order[];
@@ -39,6 +41,10 @@ export class PageListOrdersComponent implements OnInit {
 
   public changeTitle(): void {
     this.titre = 'New List Orders';
+  }
+
+  public incrementCounter() {
+    this.counter.next({nombre: this.counter.value.nombre + 1});
   }
 
   public changeState(item: Order, event: any): void {
@@ -68,5 +74,9 @@ export class PageListOrdersComponent implements OnInit {
   }
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
+  }
+
+  public check() {
+    console.log('CD PAGE-LISt.COMPONENT');
   }
 }

@@ -35,4 +35,8 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/login'])
   }
 
+  public check() {
+    console.log('CD NAV.COMPONENT');
+  }
+
 }

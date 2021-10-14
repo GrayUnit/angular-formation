@@ -4,7 +4,7 @@
       "taux_tva": 20,
       "nb_days": 3,
       "tjm_ht": 1200,
-      "state": "CONFIRMED",
+      "state": "OPTION",
       "id": 4,
       "type": "formation",
       "client": "Betclic test",

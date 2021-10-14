@@ -40,3 +40,4 @@ export class AuthentificationService {
     this.currentUserSubject$.next(null!);
   }
 }
+

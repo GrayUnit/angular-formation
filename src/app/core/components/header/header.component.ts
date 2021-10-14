@@ -19,6 +19,16 @@ export class HeaderComponent implements OnInit {
         this.title = val;
       }
      )
+    this.translate.get(['Home.WelcomeText', 'Home.WelcomeTextLogged'], {'username': 'username'})
+    .subscribe(
+      (val) => {
+        this.title = val["Home.WelcomeText"];
+      }
+    )
+  }
+
+  public check() {
+    console.log('CD HEADER.COMPONENT');
   }
 
 }
