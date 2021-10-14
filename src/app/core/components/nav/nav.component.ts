@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { AuthentificationService } from '../../services/authentification.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav',
@@ -14,7 +15,8 @@ export class NavComponent implements OnInit {
   
   constructor(
     private authService: AuthentificationService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService,
   ) { 
     this.authService.currentUser$.subscribe(
       (user) => this.currentUser = user
@@ -22,6 +24,10 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public changeLanguage(language: string) {
+    this.translate.use(language);
   }
 
   public logout() {
