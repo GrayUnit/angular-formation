@@ -8,7 +8,7 @@ import { ColOrdersService } from 'src/app/core/services/col-orders.service';
 import { NgrxOrderService } from 'src/app/core/services/ngrx-order.service';
 import { AppState } from 'src/app/core/store';
 import { LoadDeleteOrderAction, loadInitOrdersAction } from 'src/app/core/store/actions/orders.actions';
-import { selectOrderListEntities$ } from 'src/app/core/store/selectors/orders.selectors';
+import { getOrders$, selectOrderListEntities$ } from 'src/app/core/store/selectors/orders.selectors';
 
 @Component({
   selector: 'app-page-list-orders',
@@ -40,7 +40,7 @@ export class PageListOrdersComponent implements OnInit {
     private store: Store<AppState>) {
 
       //this.collection$ = this.ordersService.collection;
-      this.collection$ = this.store.pipe(select(selectOrderListEntities$));
+      this.collection$ = this.store.pipe(select(getOrders$));
     // this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
     // });

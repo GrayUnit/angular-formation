@@ -4,7 +4,7 @@ import { of } from "rxjs";
 import { catchError, map, switchMap } from "rxjs/operators";
 import { Order } from "../../models/order";
 import { NgrxOrderService } from "../../services/ngrx-order.service";
-import { ErrorLoadAction, LoadAddOrderAction, LoadDeleteOrderAction, loadInitOrdersAction, SuccessAddOrderAction, SuccessDeleteOrderAction, SuccessInitOrdersAction } from "../actions/orders.actions";
+import { ErrorLoadAction, LoadAddOrderAction, LoadDeleteOrderAction, loadInitOrdersAction, LoadUpdateOrderAction, SuccessAddOrderAction, SuccessDeleteOrderAction, SuccessInitOrdersAction, SuccessUpdateOrderAction } from "../actions/orders.actions";
 
 @Injectable()
 export  class  OrdersListEffects {
@@ -42,5 +42,15 @@ export  class  OrdersListEffects {
             ))
         )
     );
+
+    loadUpdateOrder$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(LoadUpdateOrderAction),
+            switchMap((action) => this.orderService.updateOrder(action.order).pipe(
+                map((order: Order) => SuccessUpdateOrderAction(action)),
+                catchError(err => of(ErrorLoadAction({error: err})))
+            ))
+        )
+    )
     
 }

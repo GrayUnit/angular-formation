@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { createEntityAdapter, EntityAdapter, EntityState, Update } from "@ngrx/entity";
 import { Order } from "../../models/order";
 import * as OrdersAction from '../actions/orders.actions';
 import { HttpErrorResponse } from "@angular/common/http";
@@ -99,6 +99,25 @@ export const orderReducer = createReducer(
         }
     ),
     on(
+        OrdersAction.LoadUpdateOrderAction,
+        (state: OrderStateEntity, {order}: {order: Order}): OrderStateEntity => {
+            return {
+                ...state,
+                loading: true
+            }
+        }
+    ),
+    on(
+        OrdersAction.SuccessUpdateOrderAction,
+        (state: OrderStateEntity, {order}: {order: Order}): OrderStateEntity => {
+            return {
+                ...OrderAdapter.updateOne({id: order.id, changes: order}, state),
+                loading: false,
+                logs: {type: 'SUCCESS', message: 'La commande a été modifiée avec succès'},
+            }
+        }
+    ),
+    on(
         OrdersAction.ErrorLoadAction,
         (state: OrderStateEntity, {error}: {error: HttpErrorResponse}): OrderStateEntity => {
             return {
@@ -107,6 +126,6 @@ export const orderReducer = createReducer(
                 loading: false
             }
         }
-    )
+    ),
     
 )

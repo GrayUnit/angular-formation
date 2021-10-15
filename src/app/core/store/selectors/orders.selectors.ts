@@ -16,6 +16,11 @@ export const selectOrderListEntities$ = createSelector(
     OrderReducer.selectOrders
 );
 
+export const getOrders$ = createSelector(
+    selectOrderListEntities$,
+    orders => orders.map(order => new Order(order))
+)
+
 export const selectOrderLoading$ = createSelector(
     selectOrderState$,
     (orders) => orders.loaded

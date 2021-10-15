@@ -1,4 +1,5 @@
 import { HttpErrorResponse } from "@angular/common/http";
+import { Update } from "@ngrx/entity";
 import { createAction, props } from "@ngrx/store";
 import { Order } from "../../models/order";
 
@@ -29,6 +30,16 @@ export const LoadDeleteOrderAction = createAction(
 export const SuccessDeleteOrderAction = createAction(
     '[orders] Success Delete orders',
     props<{ id: number }>()
+);
+
+export const LoadUpdateOrderAction = createAction(
+    '[orders] Load Update Order',
+    props<{order: Order}>()
+);
+
+export const SuccessUpdateOrderAction = createAction(
+    '[orders] Success Update Order',
+    props<{order: Order}>()
 );
 
 export const ErrorLoadAction = createAction(
