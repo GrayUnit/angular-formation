@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
+import { Store } from "@ngrx/store";
+import { LoadUpdateOrderAction } from 'src/app/core/store/actions/orders.action';
 
 @Component({
   selector: 'app-page-edit-order',
@@ -14,7 +16,8 @@ export class PageEditOrderComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private ordersService: ColOrdersService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
@@ -28,5 +31,10 @@ export class PageEditOrderComponent implements OnInit {
     this.ordersService.update(item).subscribe((res) => {
       this.router.navigate(['list-orders']);
     });
+  }
+
+  public updateOrder(item: Order): void {
+    this.store.dispatch(LoadUpdateOrderAction({order: item}));
+    this.router.navigate(['list-orders']);
   }
 }

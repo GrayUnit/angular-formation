@@ -9,6 +9,10 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { createTranslateLoader } from './core/helpers/translate-loader';
+import { appEffects, rootReducers } from './core/store';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +28,12 @@ import { createTranslateLoader } from './core/helpers/translate-loader';
         deps: [HttpClient]
       },
       isolate: false
+    }),
+    StoreModule.forRoot(rootReducers),
+    EffectsModule.forRoot(appEffects),
+    StoreDevtoolsModule.instrument({
+      name: '[CRM STORE]',
+      maxAge: 10
     })
   ],
   providers: [
