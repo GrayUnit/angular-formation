@@ -1,0 +1,42 @@
+{
+  "orders": [
+    {
+      "id": 4,
+      "type": "formation",
+      "client": "Betclic test",
+      "taux_tva": 20,
+      "comment": "un comment",
+      "nb_days": 3,
+      "tjm_ht": 1200,
+      "state": "OPTION"
+    },
+    {
+      "id": 5,
+      "type": "coaching",
+      "client": "Modis",
+      "taux_tva": 20,
+      "comment": "qsdfg",
+      "nb_days": 1,
+      "tjm_ht": 1200,
+      "state": "OPTION"
+    }
+  ],
+  "clients": [
+    {
+      "state": "INACTIVE",
+      "taux_tva": 20,
+      "id": 1,
+      "name": "Capgemini",
+      "total_ca_ht": 120000,
+      "email": "test@test.fr"
+    },
+    {
+      "state": "ACTIVE",
+      "taux_tva": 20,
+      "id": 2,
+      "name": "Betclic",
+      "total_ca_ht": 100000,
+      "email": "test2@test.fr"
+    }
+  ]
+}

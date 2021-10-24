@@ -1,0 +1,25 @@
+<app-template-full-width [title]="titre" *ngIf="collection$ | async as collection">
+  <!-- {{ collection | json }} -->
+  <button (click)="changeTitle()">modif title</button>
+  <app-tab-list [headers]="entetes">
+    <tr *ngFor="let item of collection">
+      <td>
+        <app-icon-edit (click)="goToEdit(item.id)"></app-icon-edit>
+        <app-icon-delete (click)="deleteItem(item.id)"></app-icon-delete>
+      </td>
+      <td>{{ item.type }}</td>
+      <td>{{ item.client | uppercase }}</td>
+      <td>{{ item.nb_days }}</td>
+      <td>{{ item.tjm_ht | currency: 'EUR' }}</td>
+      <td>{{ item | total | currency }}</td>
+      <td>{{ item | total: true | currency }}</td>
+      <td [appState]="item.state">
+        <select (change)="changeState(item, $event)">
+          <option *ngFor="let state of states" [value]="state" [selected]="item.state === state">{{ state }}
+          </option>
+        </select>
+      </td>
+    </tr>
+  </app-tab-list>
+  <app-btn-redirect label="Add Order" route="add-order"></app-btn-redirect>
+</app-template-full-width>
