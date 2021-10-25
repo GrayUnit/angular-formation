@@ -1,0 +1,46 @@
+<header class="fixed-top">
+  <!-- un bouton avec un click pour ouvrir ou fermer la nav -->
+  <span (click)="toggle()">
+    <ng-container *ngIf="open; then thenBlock else elseBlock"></ng-container>
+    <ng-template #thenBlock>
+      <ng-content select=".tr-btn-close"></ng-content>
+    </ng-template>
+    <ng-template #elseBlock>
+      <ng-content select=".tr-btn-open"></ng-content>
+    </ng-template>
+  </span>
+  <!-- utilisez la structure ngif then else -->
+  <!-- transclusion pour prejection de template html dans des templates html -->
+  <ng-content select=".tr-header"></ng-content>
+
+</header>
+<main [ngClass]="{'close-aside': !open}">
+
+  <div class="shadow position-fixed">
+
+  </div>
+
+  <aside>
+    <div class="scroller">
+
+      <ng-content select=".tr-nav"></ng-content>
+
+    </div>
+  </aside>
+
+  <div class="page">
+
+    <div class="contents">
+
+      <ng-content select=".tr-content"></ng-content>
+
+    </div>
+
+    <footer>
+
+      <ng-content select=".tr-footer"></ng-content>
+
+    </footer>
+
+  </div>
+</main>

@@ -1,0 +1,23 @@
+{
+  "orders": [
+    {
+      "id": 4,
+      "type": "formation",
+      "client": "Betclic test",
+      "taux_tva": 20,
+      "comment": "un comment",
+      "nb_days": 3,
+      "tjm_ht": 1200,
+      "state": "CONFIRMED"
+    }
+  ],
+  "clients": [
+    {
+      "taux_tva": 20,
+      "total_ca_ht": 0,
+      "id": 1,
+      "name": "test",
+      "email": "testdfsdfdf"
+    }
+  ]
+}
