@@ -10,7 +10,7 @@ import { createTranslateLoader } from './core/helpers/translate-loader';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { StoreModule } from '@ngrx/store';
-import { appEffects, rootReducers } from './core/store';
+import { appEffects, rootReducers, metaReducers } from './core/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -31,7 +31,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       },
       isolate: false
     }),
-    StoreModule.forRoot(rootReducers),
+    StoreModule.forRoot(rootReducers, { metaReducers }),
     EffectsModule.forRoot(appEffects),
     StoreDevtoolsModule.instrument({
       name: '[CRM STORE]',

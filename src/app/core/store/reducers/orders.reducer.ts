@@ -1,4 +1,4 @@
-import { createReducer, on } from "@ngrx/store";
+import { ActionReducer, createReducer, MetaReducer, on } from "@ngrx/store";
 import { createEntityAdapter, EntityAdapter, EntityState, Update } from "@ngrx/entity";
 import { Order } from "../../models/order";
 import * as OrdersAction from '../actions/orders.actions';
@@ -34,6 +34,16 @@ export const {
     selectAll: selectOrders,
     selectTotal: selectTotalOrders
 } = OrderAdapter.getSelectors();
+
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+    return function(state, action) {
+      console.log('state', state);
+      console.log('action', action);
+   
+      return reducer(state, action);
+    };
+}
+
 
 // après avoir créé nos action, on les utilise dans OrderReducer qui effectuera une modif de OrderState en fonction de l'action
 export const orderReducer = createReducer(
