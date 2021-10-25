@@ -9,6 +9,16 @@
       "nb_days": 3,
       "tjm_ht": 1200,
       "state": "CONFIRMED"
+    },
+    {
+      "id": 5,
+      "type": "test",
+      "client": "test",
+      "taux_tva": 20,
+      "comment": null,
+      "nb_days": 1,
+      "tjm_ht": 1200,
+      "state": "OPTION"
     }
   ],
   "clients": [
