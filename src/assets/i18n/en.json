@@ -1,0 +1,8 @@
+{
+    "Home": {
+        "WelcomeText": "Welcome on APP !",
+        "WelcomeTextLogged": "Welcome {{username}} on app"
+    },
+    "Global": {
+    }
+}

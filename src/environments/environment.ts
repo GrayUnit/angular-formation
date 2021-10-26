@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   urlApi: 'http://localhost:3000',
-  authUrlApi: 'http://locahost:4000'
+  authUrlApi: 'http://locahost:4000/'
 };
 
 /*

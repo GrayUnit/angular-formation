@@ -17,6 +17,7 @@ const routes: Routes = [
     path: 'list-clients',
     loadChildren: () =>
       import('./clients/clients.module').then((m) => m.ClientsModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'list-orders',

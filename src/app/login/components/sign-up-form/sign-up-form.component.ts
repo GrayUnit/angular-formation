@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpFormComponent implements OnInit {
 
-  constructor() { }
+  public registerForm!: FormGroup;
+  @Output() submitted: EventEmitter<any> = new EventEmitter();
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.registerForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+  }
+
+  get fields() {
+    return this.registerForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted.emit(this.registerForm.value);
   }
 
 }

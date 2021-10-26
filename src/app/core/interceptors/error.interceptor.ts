@@ -7,19 +7,20 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { AuthenticateService } from '../services/authenticate.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private authService: AuthenticateService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError(
         (err) => {
           if(err.status == 401) {
-            // logout
-            location.reload()
+            this.authService.logout();
+            location.reload();
           }
           const error = err.error.message || err.statusText;
           return throwError(error);

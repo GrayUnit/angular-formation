@@ -1,8 +1,19 @@
+<h5 *ngIf="!currentUser">{{ 'Home.WelcomeText' | translate }}</h5>
+<h5 *ngIf="currentUser">{{ 'Home.WelcomeText' | translate: {'username': currentUser.username} }}</h5>
+<!-- <h5 [translate]="'Home.WelcomeText" [translateParams]="{username: currentUser.username}" ></h5>
+<h5 translate>Home.WelcomeText</h5> -->
 <ul class="nav flex-column">
   <li class="nav-item">
     <a class="nav-link" [routerLink]="['list-orders']" routerLinkActive="active">Orders</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" routerLink="/list-clients" routerLinkActive="active">Clients</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="logout()" *ngIf="currentUser">Déconnexion</a>
+  </li>
+  <li>
+    <button (click)="changeLanguage('fr')">Passer en français</button>
+    <button (click)="changeLanguage('en')">Passer en anglais</button>
   </li>
 </ul>
