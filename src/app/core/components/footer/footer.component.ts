@@ -11,6 +11,5 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {}
 
   check() {
-    console.log('CD FOOTER');
   }
 }

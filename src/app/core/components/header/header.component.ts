@@ -26,6 +26,5 @@ export class HeaderComponent implements OnInit {
   }
 
   check() {
-    console.log('CD HEADER');
   }
 }

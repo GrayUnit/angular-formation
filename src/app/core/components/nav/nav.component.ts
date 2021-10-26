@@ -35,7 +35,6 @@ export class NavComponent implements OnInit {
   }
 
   check() {
-    console.log('CD NAV');
   }
 
 }

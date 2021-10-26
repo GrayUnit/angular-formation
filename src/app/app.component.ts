@@ -15,6 +15,5 @@ export class AppComponent {
   }
 
   check() {
-    console.log('CD APP');
   }
 }
