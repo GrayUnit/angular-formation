@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
@@ -26,6 +26,7 @@ export class PageListOrdersComponent implements OnInit {
     'Total TTC',
     'State',
   ];
+  public counter: BehaviorSubject<any> = new BehaviorSubject({nombre: 1});
   constructor(private ordersService: ColOrdersService, 
     private router: Router,
     private route: ActivatedRoute) {
@@ -33,6 +34,10 @@ export class PageListOrdersComponent implements OnInit {
     // this.sub = this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
     // });
+  }
+
+  public incrementCounter() {
+    this.counter.next({nombre: this.counter.value.nombre + 1})
   }
 
   public changeTitle(): void {
@@ -66,5 +71,9 @@ export class PageListOrdersComponent implements OnInit {
   }
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
+  }
+
+  check() {
+    console.log("CD LIST-O.")
   }
 }

@@ -1,7 +1,9 @@
 <app-template-full-width [title]="titre" *ngIf="collection$ | async as collection">
   <!-- {{ collection | json }} -->
   <button (click)="changeTitle()">modif title</button>
-  <app-tab-list [headers]="entetes">
+  <button (click)="incrementCounter()">Inc. Counter</button>
+  <!-- <span>{{ counter.nombre }}</span> -->
+  <app-tab-list [headers]="entetes" [counter]="counter.asObservable()">
     <tr *ngFor="let item of collection">
       <td>
         <app-icon-edit (click)="goToEdit(item.id)"></app-icon-edit>
@@ -28,3 +30,4 @@
   <a routerLink="detail">Order detail</a>
   <router-outlet></router-outlet>
 </app-template-full-width>
+{{ check() }}

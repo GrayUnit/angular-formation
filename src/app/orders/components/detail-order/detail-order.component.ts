@@ -19,4 +19,7 @@ export class DetailOrderComponent implements OnInit {
     this.myItem$ = this.orderService.item$;
   }
 
+  check() {
+    console.log("CD DETAIL.")
+  }
 }
