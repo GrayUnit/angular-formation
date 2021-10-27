@@ -1,14 +1,14 @@
 {
   "orders": [
     {
+      "taux_tva": 20,
+      "nb_days": 3,
+      "tjm_ht": 1200,
+      "state": "OPTION",
       "id": 4,
       "type": "formation",
       "client": "Betclic test",
-      "taux_tva": 20,
-      "comment": "un comment",
-      "nb_days": 3,
-      "tjm_ht": 1200,
-      "state": "CONFIRMED"
+      "comment": "un comment"
     },
     {
       "id": 5,

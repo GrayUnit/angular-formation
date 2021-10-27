@@ -29,6 +29,21 @@ export class NavComponent implements OnInit {
     this.translate.get('Home.WelcomeText').subscribe(
       (val) => {
         this.title = val;
+        console.log("Hey");
+        console.log(val);
+      }
+    )
+    this.translate.onLangChange.subscribe(
+      (value) => {
+        console.log(value);
+        //reatach
+      }
+    )
+    this.translate.stream('Home.WelcomeText').subscribe(
+      (val) => {
+        this.title = val;
+        console.log("Hey");
+        console.log(val);
       }
     )
 
