@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, TransferState } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -10,22 +10,25 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FakeBackendInterceptor, fakeBackendProvider } from './core/helpers/fake-backend.interceptor';
 import { createTranslateLoader } from './core/helpers/translate-loader';
+import { translateBrowserLoaderFactory } from './core/helpers/translate-loader.browser';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { appEffects, rootReducers } from './core/store';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     CoreModule,
     AppRoutingModule,
     HttpClientModule,
+    TransferHttpCacheModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
+        useFactory: translateBrowserLoaderFactory,
+        deps: [HttpClient, TransferState]
       }
     }),
     StoreModule.forRoot(rootReducers),
