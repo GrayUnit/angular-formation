@@ -1,14 +1,14 @@
 {
   "orders": [
     {
+      "taux_tva": 20,
+      "nb_days": 3,
+      "tjm_ht": 1200,
+      "state": "CANCELED",
       "id": 4,
       "type": "formation",
       "client": "Betclic test",
-      "taux_tva": 20,
-      "comment": "un comment",
-      "nb_days": 3,
-      "tjm_ht": 1200,
-      "state": "OPTION"
+      "comment": "un comment"
     },
     {
       "id": 5,
@@ -23,11 +23,11 @@
   ],
   "clients": [
     {
-      "state": "INACTIVE",
+      "state": "ACTIVE",
       "taux_tva": 20,
+      "total_ca_ht": 120000,
       "id": 1,
       "name": "Capgemini",
-      "total_ca_ht": 120000,
       "email": "test@test.fr"
     },
     {

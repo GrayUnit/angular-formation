@@ -19,7 +19,11 @@
           </option>
         </select>
       </td>
+      <td>
+        <button (click)="getDetails(item)">détails</button>
+      </td>
     </tr>
   </app-tab-list>
   <app-btn-redirect label="Add Order" route="add-order"></app-btn-redirect>
+  <router-outlet></router-outlet>
 </app-template-full-width>

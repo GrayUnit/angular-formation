@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
@@ -25,8 +25,13 @@ export class PageListOrdersComponent implements OnInit {
     'Total HT',
     'Total TTC',
     'State',
+    'Detail'
   ];
-  constructor(private ordersService: ColOrdersService, private router: Router) {
+  constructor(
+    private ordersService: ColOrdersService,
+    private router: Router,
+    private currentRoute: ActivatedRoute
+  ) {
     this.collection$ = this.ordersService.collection;
     // this.sub = this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
@@ -51,8 +56,20 @@ export class PageListOrdersComponent implements OnInit {
   public deleteItem(id: number): void {
     this.ordersService.delete(id).subscribe();
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentRoute.data.subscribe(
+      (data) => {
+        this.titre = data.title;
+      }
+    )
+  }
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
+  }
+
+  public getDetails(item: Order): void {
+    // Attention entraine le rechargement du parent ! 
+    // this.router.navigate(["list-orders", "detail"]);
+    this.ordersService.getDetails(item);
   }
 }

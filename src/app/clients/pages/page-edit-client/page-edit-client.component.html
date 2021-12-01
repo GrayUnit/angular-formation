@@ -1,1 +1,3 @@
-<p>page-edit-client works!</p>
+<app-template-container title="Edit Order">
+    <app-form-client *ngIf="item$ | async as item" [init]="item" (submitted)="update($event)"></app-form-client>
+</app-template-container> 
