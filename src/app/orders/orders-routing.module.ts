@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../core/guards/auth.guard';
 import { DetailOrderComponent } from './components/detail-order/detail-order.component';
 import { OtherComponentComponent } from './components/other-component/other-component.component';
 import { PageAddOrderComponent } from './pages/page-add-order/page-add-order.component';
@@ -14,8 +15,9 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'detail', pathMatch: 'full'},
       { path: 'detail', component: DetailOrderComponent },
-      { path: 'other', component: OtherComponentComponent}
-    ]
+      { path: 'other', component: OtherComponentComponent }
+    ],
+    canActivate: [AuthGuard],
   },
   { path: 'add-order', component: PageAddOrderComponent },
   { 
