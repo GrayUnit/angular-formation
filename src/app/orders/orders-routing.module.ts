@@ -20,7 +20,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'add-order', component: PageAddOrderComponent },
-  { 
+  {
     path: 'edit-order/:id',
     component: PageEditOrderComponent,
   },
