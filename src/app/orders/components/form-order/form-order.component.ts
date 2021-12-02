@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 
@@ -7,6 +7,7 @@ import { Order } from 'src/app/core/models/order';
   selector: 'app-form-order',
   templateUrl: './form-order.component.html',
   styleUrls: ['./form-order.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormOrderComponent implements OnInit {
   public form!: FormGroup;
@@ -17,13 +18,14 @@ export class FormOrderComponent implements OnInit {
   // doit être un observable d'rxjs
   // ne doit pas être initialisé avec un flux de data lorsque vous le crééz
   // doit être un observable avec le comportement chaud
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       id: [this.init.id],
       type: [this.init.type],
-      client: [this.init.client],
+      client: [this.init.client, Validators.minLength(10)],
       taux_tva: [this.init.taux_tva],
       comment: [this.init.comment],
       nb_days: [this.init.nb_days],
@@ -33,6 +35,11 @@ export class FormOrderComponent implements OnInit {
   }
 
   public onSubmit() {
+//    this.cd.detechChanges();
     this.submited.emit(this.form.value);
+  }
+
+  public check() {
+    console.log("CD Form Order");
   }
 }

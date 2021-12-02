@@ -2,5 +2,8 @@
     "Home": {
         "WelcomeText": "Bienvenue sur l'application",
         "WelcomeTextLogged": "Bienvenue {{ username }}"
+    },
+    "State": {
+        "Actif": "Actif"
     }
 }

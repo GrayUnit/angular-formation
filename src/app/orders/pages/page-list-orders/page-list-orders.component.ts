@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
@@ -9,6 +9,7 @@ import { ColOrdersService } from 'src/app/core/services/col-orders.service';
   selector: 'app-page-list-orders',
   templateUrl: './page-list-orders.component.html',
   styleUrls: ['./page-list-orders.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageListOrdersComponent implements OnInit {
   public collection$: Subject<Order[]>;
@@ -16,6 +17,7 @@ export class PageListOrdersComponent implements OnInit {
   // private sub!: Subscription;
   public titre = 'List Orders';
   // public collection!: Order[];
+  public counter: BehaviorSubject<any> = new BehaviorSubject({nombre: {value: 0}});
   public entetes = [
     'Action',
     'Type',
@@ -30,12 +32,14 @@ export class PageListOrdersComponent implements OnInit {
   constructor(
     private ordersService: ColOrdersService,
     private router: Router,
-    private currentRoute: ActivatedRoute
+    private currentRoute: ActivatedRoute,
+    private cd: ChangeDetectorRef
   ) {
     this.collection$ = this.ordersService.collection;
     // this.sub = this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
     // });
+    
   }
 
   public changeTitle(): void {
@@ -48,6 +52,14 @@ export class PageListOrdersComponent implements OnInit {
       // gerer les erreur api (qu'on basculera ensuite dans un pipe au niveau du service)
       Object.assign(item, data);
     });
+  }
+
+  public incrementCounter() {
+    this.counter.next({
+      nombre: {
+        value: this.counter.value.nombre.value + 1
+      }
+    })
   }
 
   public goToEdit(id: number): void {
@@ -63,13 +75,22 @@ export class PageListOrdersComponent implements OnInit {
       }
     )
   }
+
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
+  }
+
+  public detacher() {
+    this.cd.detach();
   }
 
   public getDetails(item: Order): void {
     // Attention entraine le rechargement du parent ! 
     // this.router.navigate(["list-orders", "detail"]);
     this.ordersService.getDetails(item);
+  }
+
+  public check() {
+    console.log("CD List Order");
   }
 }

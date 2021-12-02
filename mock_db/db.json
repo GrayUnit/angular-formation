@@ -4,21 +4,21 @@
       "taux_tva": 20,
       "nb_days": 3,
       "tjm_ht": 1200,
-      "state": "CANCELED",
+      "state": "CONFIRMED",
       "id": 4,
       "type": "formation",
       "client": "Betclic test",
       "comment": "un comment"
     },
     {
+      "taux_tva": 20,
+      "nb_days": 1,
+      "tjm_ht": 1200,
+      "state": "CANCELED",
       "id": 5,
       "type": "coaching",
       "client": "Modis",
-      "taux_tva": 20,
-      "comment": "qsdfg",
-      "nb_days": 1,
-      "tjm_ht": 1200,
-      "state": "OPTION"
+      "comment": "qsdfg"
     }
   ],
   "clients": [

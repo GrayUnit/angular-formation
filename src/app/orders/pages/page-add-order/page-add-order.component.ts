@@ -21,4 +21,8 @@ export class PageAddOrderComponent implements OnInit {
       this.router.navigate(['list-orders']);
     });
   }
+
+  public check() {
+    console.log("CD Add Order");
+  }
 }
