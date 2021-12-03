@@ -10,15 +10,15 @@ import { Observable, of, throwError } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { User } from '../models/user';
 
-let users = JSON.parse(localStorage.getItem('users')!) || [];
+
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
-
+  
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
+    let users = JSON.parse(localStorage.getItem('users')!) || [];
     const { url, method, headers, body } = request;
     return of(null).pipe(mergeMap(handleRoute));
 

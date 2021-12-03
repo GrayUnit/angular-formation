@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "fee9299e-4204-42c3-a87f-23ca091ebbdf"
+    "analytics": "fee9299e-4204-42c3-a87f-23ca091ebbdf",
+    "packageManager": "yarn"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -29,7 +30,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/crm-betclic",
+            "outputPath": "dist/crm-betclic/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -112,6 +113,65 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/crm-betclic/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "crm-betclic:build:development",
+              "serverTarget": "crm-betclic:server:development"
+            },
+            "production": {
+              "browserTarget": "crm-betclic:build:production",
+              "serverTarget": "crm-betclic:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "crm-betclic:build:production",
+              "serverTarget": "crm-betclic:server:production"
+            },
+            "development": {
+              "browserTarget": "crm-betclic:build:development",
+              "serverTarget": "crm-betclic:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
