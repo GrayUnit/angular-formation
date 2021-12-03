@@ -9,9 +9,9 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class TabListComponent implements OnInit, OnDestroy {
   @Input() headers!: string[];
-  @Input() counter!: Observable<any>;
-  public count!: number;
-  private countSubscription!: Subscription;
+  // @Input() counter!: Observable<any>;
+  // public count!: number;
+  // private countSubscription!: Subscription;
 
   constructor(private cd: ChangeDetectorRef) {
   //  this.cd.detach();
@@ -23,16 +23,16 @@ export class TabListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.countSubscription = this.counter.subscribe(
-      (data) => {
-        this.count = data.nombre.value;
-      //  this.cd.markForCheck();
-      }
-    )
+    // this.countSubscription = this.counter.subscribe(
+    //   (data) => {
+    //     this.count = data.nombre.value;
+    //   //  this.cd.markForCheck();
+    //   }
+    // )
   }
 
   ngOnDestroy() {
-    this.countSubscription.unsubscribe();
+    //this.countSubscription.unsubscribe();
   }
 
   public check() {

@@ -3,11 +3,12 @@
   <button (click)="changeTitle()">modif title</button>
   <button (click)="incrementCounter()">Inc count.</button>
   <button (click)="detacher()">Detacher</button>
-  <app-tab-list [headers]="entetes" [counter]="counter">
+  <!-- <app-tab-list [headers]="entetes" [counter]="counter"> -->
+  <app-tab-list [headers]="entetes">
     <tr *ngFor="let item of collection">
       <td>
         <app-icon-edit (click)="goToEdit(item.id)"></app-icon-edit>
-        <app-icon-delete (click)="deleteItem(item.id)"></app-icon-delete>
+        <app-icon-delete (click)="deleteOrder(item.id)"></app-icon-delete>
       </td>
       <td>{{ item.type }}</td>
       <td>{{ item.client | uppercase }}</td>

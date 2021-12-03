@@ -7,18 +7,8 @@
       "state": "CONFIRMED",
       "id": 4,
       "type": "formation",
-      "client": "Betclic test",
+      "client": "tototototo",
       "comment": "un comment"
-    },
-    {
-      "taux_tva": 20,
-      "nb_days": 1,
-      "tjm_ht": 1200,
-      "state": "CANCELED",
-      "id": 5,
-      "type": "coaching",
-      "client": "Modis",
-      "comment": "qsdfg"
     }
   ],
   "clients": [

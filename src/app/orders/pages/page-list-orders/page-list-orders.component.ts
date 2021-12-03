@@ -1,9 +1,13 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
+import { AppState } from 'src/app/core/store';
+import { LoadDeleteOrderAction, loadInitOrdersAction } from 'src/app/core/store/actions/orders.action';
+import { selectOrderListEntities$, selectOrderObject$ } from 'src/app/core/store/selectors/order.selector';
 
 @Component({
   selector: 'app-page-list-orders',
@@ -12,7 +16,7 @@ import { ColOrdersService } from 'src/app/core/services/col-orders.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageListOrdersComponent implements OnInit {
-  public collection$: Subject<Order[]>;
+  public collection$: Observable<Order[]>;
   public states = Object.values(StateOrder);
   // private sub!: Subscription;
   public titre = 'List Orders';
@@ -33,13 +37,14 @@ export class PageListOrdersComponent implements OnInit {
     private ordersService: ColOrdersService,
     private router: Router,
     private currentRoute: ActivatedRoute,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private store: Store<AppState>
   ) {
-    this.collection$ = this.ordersService.collection;
+    //this.collection$ = this.ordersService.collection;
     // this.sub = this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
     // });
-    
+    this.collection$ = this.store.pipe(select(selectOrderObject$))
   }
 
   public changeTitle(): void {
@@ -68,12 +73,16 @@ export class PageListOrdersComponent implements OnInit {
   public deleteItem(id: number): void {
     this.ordersService.delete(id).subscribe();
   }
+  public deleteOrder(id: number): void {
+    this.store.dispatch(LoadDeleteOrderAction({id: id}));
+  }
   ngOnInit(): void {
     this.currentRoute.data.subscribe(
       (data) => {
         this.titre = data.title;
       }
     )
+    this.store.dispatch(loadInitOrdersAction());
   }
 
   ngOnDestroy(): void {

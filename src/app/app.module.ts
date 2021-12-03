@@ -1,6 +1,9 @@
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +12,7 @@ import { createTranslateLoader } from './core/helpers/translate-loader';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { FakeBackendInterceptor } from './core/interceptors/fake-backend.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { appEffects, rootReducers } from './core/store';
 import { LoginModule } from './login/login.module';
 
 @NgModule({
@@ -25,6 +29,12 @@ import { LoginModule } from './login/login.module';
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
+    }),
+    StoreModule.forRoot(rootReducers),
+    EffectsModule.forRoot(appEffects),
+    StoreDevtoolsModule.instrument({
+      name: '[CRM Store]',
+      maxAge: 25
     })
   ],
   providers: [
