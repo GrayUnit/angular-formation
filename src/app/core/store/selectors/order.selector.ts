@@ -14,7 +14,7 @@ export const selectOrderListEntities$ = createSelector(
 
 export const selectOrderLoading$ = createSelector(
     selectOrderState$,
-    (orders) => orders.loaded
+    (orders) => orders.loading
 );
 
 export const selectOrderObject$ = createSelector(

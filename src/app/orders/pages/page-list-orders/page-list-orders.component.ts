@@ -7,7 +7,7 @@ import { Order } from 'src/app/core/models/order';
 import { ColOrdersService } from 'src/app/core/services/col-orders.service';
 import { AppState } from 'src/app/core/store';
 import { LoadDeleteOrderAction, loadInitOrdersAction } from 'src/app/core/store/actions/orders.action';
-import { selectOrderListEntities$, selectOrderObject$ } from 'src/app/core/store/selectors/order.selector';
+import { selectOrderListEntities$, selectOrderLoading$, selectOrderObject$ } from 'src/app/core/store/selectors/order.selector';
 
 @Component({
   selector: 'app-page-list-orders',
@@ -17,6 +17,7 @@ import { selectOrderListEntities$, selectOrderObject$ } from 'src/app/core/store
 })
 export class PageListOrdersComponent implements OnInit {
   public collection$: Observable<Order[]>;
+  public loading$: Observable<boolean>;
   public states = Object.values(StateOrder);
   // private sub!: Subscription;
   public titre = 'List Orders';
@@ -44,7 +45,13 @@ export class PageListOrdersComponent implements OnInit {
     // this.sub = this.ordersService.collection.subscribe((data) => {
     //   this.collection = data;
     // });
-    this.collection$ = this.store.pipe(select(selectOrderObject$))
+    this.collection$ = this.store.pipe(select(selectOrderObject$));
+    this.loading$ = this.store.pipe(select(selectOrderLoading$));
+    this.loading$.subscribe(
+      (loading) => {
+        console.log(loading);
+      }
+    )
   }
 
   public changeTitle(): void {
